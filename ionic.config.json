@@ -1,0 +1,7 @@
+{
+  "name": "ttw-companion",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular-standalone"
+}
