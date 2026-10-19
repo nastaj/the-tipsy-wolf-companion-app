@@ -1,0 +1,61 @@
+<div class="flex h-full bg-bg">
+  <!-- Desktop sidebar (lg and up) -->
+  <nav
+    class="hidden w-64 shrink-0 flex-col border-r border-border bg-surface px-4 py-6 lg:flex"
+    aria-label="Main"
+    data-testid="sidebar"
+  >
+    <p class="px-2 font-display text-3xl leading-tight text-ink">The Tipsy Wolf</p>
+    <p class="px-2 text-[11px] font-bold uppercase tracking-[0.2em] text-muted">Keeper's Ledger</p>
+
+    <ul class="mt-8 flex list-none flex-col gap-2 p-0">
+      @for (item of nav; track item.tab) {
+        <li>
+          <a
+            [routerLink]="'/' + item.tab"
+            routerLinkActive="!bg-primary !text-on-primary !border-primary"
+            ariaCurrentWhenActive="page"
+            class="flex items-center gap-3 rounded-lg border border-border bg-bg px-3 py-2.5 text-sm font-bold uppercase tracking-wider text-ink no-underline"
+          >
+            <ion-icon aria-hidden="true" [name]="item.icon" class="text-xl" />
+            {{ item.label }}
+          </a>
+        </li>
+      }
+    </ul>
+
+    <div class="mt-auto border-t border-border pt-4">
+      <p class="px-2 text-xs uppercase tracking-wider text-muted">Signed in as</p>
+      <p class="truncate px-2 font-bold text-ink">{{ auth.keeperName() }}</p>
+      <button
+        type="button"
+        class="mt-3 flex w-full items-center justify-center gap-2 rounded-lg border border-border bg-bg px-3 py-2 text-sm font-bold uppercase tracking-wider text-ink"
+        (click)="signOut()"
+      >
+        <ion-icon aria-hidden="true" name="log-out-outline" />
+        Sign out
+      </button>
+    </div>
+  </nav>
+
+  <!-- Tab content; the bottom tab bar is mobile/tablet only -->
+  <div class="relative min-w-0 flex-1">
+    <ion-tabs>
+      <ion-tab-bar
+        slot="bottom"
+        class="h-auto gap-2 contain-none border-t border-border px-3 pt-2 pb-[calc(var(--ion-safe-area-bottom,0px)+0.5rem)] [--background:var(--color-bg)] lg:hidden"
+        data-testid="tab-bar"
+      >
+        @for (item of nav; track item.tab) {
+          <ion-tab-button
+            [tab]="item.tab"
+            class="h-14 rounded-lg border border-border [--background:var(--color-surface)] [--color:var(--color-ink)] [--color-selected:var(--color-on-primary)] [--ripple-color:var(--color-accent)] [&.tab-selected]:border-primary [&.tab-selected]:[--background:var(--color-primary)]"
+          >
+            <ion-icon aria-hidden="true" [name]="item.icon" />
+            <ion-label class="text-[10px] font-bold uppercase tracking-wider">{{ item.label }}</ion-label>
+          </ion-tab-button>
+        }
+      </ion-tab-bar>
+    </ion-tabs>
+  </div>
+</div>
