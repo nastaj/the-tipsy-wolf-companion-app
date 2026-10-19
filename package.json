@@ -1,15 +1,14 @@
 {
   "name": "ttw-companion",
   "version": "0.0.1",
-  "author": "Ionic Framework",
-  "homepage": "https://ionicframework.com/",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "lint": "ng lint"
+    "lint": "ng lint",
+    "e2e": "playwright test"
   },
   "private": true,
   "dependencies": {
@@ -19,12 +18,14 @@
     "@angular/forms": "22.1.7",
     "@angular/platform-browser": "22.1.7",
     "@angular/router": "22.1.7",
+    "@angular/service-worker": "22.1.7",
     "@capacitor/app": "8.1.2",
     "@capacitor/core": "8.5.3",
     "@capacitor/haptics": "8.0.2",
     "@capacitor/keyboard": "8.0.6",
     "@capacitor/status-bar": "8.0.4",
     "@ionic/angular": "^9.0.0",
+    "@supabase/supabase-js": "^2.118.0",
     "ionicons": "^8.1.0",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0"
@@ -36,12 +37,16 @@
     "@angular/language-service": "22.1.7",
     "@capacitor/cli": "8.5.3",
     "@ionic/angular-toolkit": "^13.0.0",
+    "@playwright/test": "^1.64.1",
+    "@tailwindcss/postcss": "^4.3.3",
     "angular-eslint": "22.5.0",
     "eslint": "^10.10.0",
     "jsdom": "^30.1.1",
+    "postcss": "^8.5.31",
+    "tailwindcss": "^4.3.3",
     "typescript": "~6.0.0",
     "typescript-eslint": "^8.61.0",
     "vitest": "~4.0.18"
   },
-  "description": "An Ionic project"
+  "description": "Companion app for The Tipsy Wolf tavern management game"
 }
