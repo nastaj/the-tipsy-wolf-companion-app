@@ -1,37 +1,38 @@
 /*
  * App Global CSS
  * ----------------------------------------------------------------------------
- * Put style rules here that you want to apply globally. These styles are for
- * the entire app and not just one component. Additionally, this file can be
- * used as an entry point to import other CSS/Sass files to be included in the
- * output CSS.
- * For more information on global stylesheets, visit the documentation:
- * https://ionicframework.com/docs/layout/global-stylesheets
+ * Ionic's CSS and the Tailwind setup live in `src/tailwind.css`.
+ * This file only maps Ionic's theme variables onto our brand tokens so Ionic's
+ * own surfaces (ion-content, toasts, alerts) match the Tailwind-drawn UI.
  */
 
-/* Core CSS required for Ionic components to work properly */
-@import "@ionic/angular/css/core.css";
+:root,
+:root.ion-palette-dark {
+  --ion-font-family: var(--font-sans);
+  --ion-background-color: var(--color-bg);
+  --ion-background-color-rgb: 249, 235, 216;
+  --ion-text-color: var(--color-ink);
+  --ion-text-color-rgb: 33, 10, 5;
+  --ion-overlay-background-color: var(--color-surface);
+  --ion-border-color: var(--color-border);
+  --ion-tab-bar-background: var(--color-bg);
 
-/* Basic CSS for apps built with Ionic */
-@import "@ionic/angular/css/normalize.css";
-@import "@ionic/angular/css/structure.css";
-@import "@ionic/angular/css/typography.css";
-@import "@ionic/angular/css/display.css";
+  --ion-color-primary: #4c2015;
+  --ion-color-primary-rgb: 76, 32, 21;
+  --ion-color-primary-contrast: #f9ebd8;
+  --ion-color-primary-contrast-rgb: 249, 235, 216;
+  --ion-color-primary-shade: #431c12;
+  --ion-color-primary-tint: #5e362c;
+}
 
-/* Optional CSS utils that can be commented out */
-@import "@ionic/angular/css/padding.css";
-@import "@ionic/angular/css/float-elements.css";
-@import "@ionic/angular/css/text-alignment.css";
-@import "@ionic/angular/css/text-transformation.css";
-@import "@ionic/angular/css/flex-utils.css";
+:root.ion-palette-dark {
+  --ion-background-color-rgb: 30, 22, 9;
+  --ion-text-color-rgb: 249, 235, 216;
 
-/**
- * Ionic Dark Mode
- * -----------------------------------------------------
- * For more info, please see:
- * https://ionicframework.com/docs/theming/dark-mode
- */
-
-/* @import "@ionic/angular/css/palettes/dark.always.css"; */
-/* @import "@ionic/angular/css/palettes/dark.class.css"; */
-@import '@ionic/angular/css/palettes/dark.system.css';
+  --ion-color-primary: #e8bf74;
+  --ion-color-primary-rgb: 232, 191, 116;
+  --ion-color-primary-contrast: #210a05;
+  --ion-color-primary-contrast-rgb: 33, 10, 5;
+  --ion-color-primary-shade: #cca866;
+  --ion-color-primary-tint: #eac582;
+}
