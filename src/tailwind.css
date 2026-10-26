@@ -1,0 +1,88 @@
+/*
+ * Tailwind v4 entry (plain CSS - Tailwind v4 cannot be processed through Sass).
+ *
+ * Preflight is intentionally NOT imported: Ionic ships its own reset.
+ * Ionic's global CSS is imported into the `base` layer so Tailwind utilities
+ * (in the later `utilities` layer) always win over it.
+ */
+@layer theme, base, components, utilities;
+
+@import "tailwindcss/theme.css" layer(theme);
+@import "tailwindcss/utilities.css" layer(utilities);
+
+/* Core CSS required for Ionic components to work properly */
+@import "@ionic/angular/css/core.css" layer(base);
+@import "@ionic/angular/css/normalize.css" layer(base);
+@import "@ionic/angular/css/structure.css" layer(base);
+@import "@ionic/angular/css/typography.css" layer(base);
+@import "@ionic/angular/css/display.css" layer(base);
+/* Dark palette for Ionic components, toggled by ThemeService via .ion-palette-dark */
+@import "@ionic/angular/css/palettes/dark.class.css" layer(base);
+
+@source "./app";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+/*
+ * Brand tokens from The Tipsy Wolf colour scheme.
+ * Utilities reference these variables, so `.dark` below re-themes everything.
+ */
+@theme {
+  --color-bg: #f9ebd8;
+  --color-surface: #fbf3e8;
+  --color-sunken: #eedcbf;
+  --color-ink: #210a05;
+  --color-muted: #907545;
+  --color-border: #bb995c;
+  --color-primary: #4c2015;
+  --color-primary-soft: #7d3928;
+  --color-on-primary: #f9ebd8;
+  --color-accent: #e8bf74;
+  --color-gold: #a8763f;
+  --color-forest: #9cbd32;
+  --color-danger: #b1543c;
+
+  --font-display: "Fruktur", "Georgia", serif;
+  --font-sans: "Lato", system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+
+@layer base {
+  .dark {
+    --color-bg: #1e1609;
+    --color-surface: #2d2210;
+    --color-sunken: #403617;
+    --color-ink: #f9ebd8;
+    --color-muted: #bb995c;
+    --color-border: #675530;
+    --color-primary: #7d3928;
+    --color-primary-soft: #b1543c;
+    --color-on-primary: #f9ebd8;
+    --color-accent: #e8bf74;
+    --color-gold: #e8bf74;
+    --color-forest: #9cbd32;
+    --color-danger: #e77255;
+  }
+
+  html {
+    font-family: var(--font-sans);
+    color: var(--color-ink);
+    background: var(--color-bg);
+  }
+
+  h1,
+  h2,
+  h3 {
+    font-family: var(--font-display);
+    font-weight: 400;
+    margin: 0;
+  }
+
+  p {
+    margin: 0;
+  }
+
+  button {
+    font: inherit;
+    cursor: pointer;
+  }
+}
