@@ -3,14 +3,12 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  // Supabase project settings (Project Settings → API). The publishable/anon key
+  // is safe to ship in the client; never put the service_role key here.
+  // See docs/supabase-setup.md.
+  supabase: {
+    url: 'https://pyjhxbbahgtrlfusjnre.supabase.co',
+    anonKey: 'sb_publishable_2EZo8Kc63vdSYvg7yHatWw_0l8_ec8A',
+  },
 };
-
-/*
- * For easier debugging in development mode, you can import the following file
- * to ignore zone related error stack frames such as `zone.run`, `zoneDelegate.invokeTask`.
- *
- * This import should be commented out in production mode because it will have a negative impact
- * on performance if an error is thrown.
- */
-// import 'zone.js/plugins/zone-error';  // Included with Angular CLI.
