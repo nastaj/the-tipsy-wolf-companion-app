@@ -1,11 +1,11 @@
 /*
- * Domain models for the companion app.
- * PROVISIONAL: shapes will be revisited once the Unity game's data model and
- * the Supabase tables are defined.
+ * Domain models for the companion app, mapped from the Supabase tables
+ * (see supabase/migrations and database.types.ts).
  */
 
 export interface LeaderboardEntry {
   rank: number;
+  keeperId: string;
   keeperName: string;
   /** Gold earned in the level run. */
   gold: number;
@@ -25,10 +25,10 @@ export interface MarketItem {
 }
 
 export interface Review {
-  id: string;
+  id: number;
   author: string;
   /** e.g. "Dwarven merchant" */
-  epithet: string;
+  epithet: string | null;
   rating: 1 | 2 | 3 | 4 | 5;
   level: number;
   text: string;
