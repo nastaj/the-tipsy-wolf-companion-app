@@ -28,7 +28,7 @@
     </div>
 
     <ol class="mt-1 flex list-none flex-col gap-2 p-0" data-testid="leaderboard">
-      @for (entry of entries.value() ?? []; track entry.keeperName) {
+      @for (entry of entries.value() ?? []; track entry.keeperId) {
         <li
           class="flex items-center rounded-lg border px-4 py-3"
           [class]="entry.isCurrentUser ? 'border-primary bg-primary text-on-primary' : 'border-border bg-surface text-ink'"
