@@ -1,0 +1,54 @@
+<ion-header class="ion-no-border">
+  <app-page-header title="Top Keepers" />
+</ion-header>
+
+<ion-content>
+  <div class="mx-auto max-w-5xl px-4 py-4 lg:px-8 lg:py-6">
+    <div class="max-w-3xl">
+    <div class="relative inline-flex items-center">
+      <label for="level-select" class="sr-only">Level</label>
+      <select
+        id="level-select"
+        class="appearance-none rounded-md border border-border bg-surface py-1.5 pr-8 pl-3 text-sm font-bold text-ink"
+        data-testid="level-select"
+        [value]="level()"
+        (change)="onLevelChange($event)"
+      >
+        @for (l of levels(); track l) {
+          <option [value]="l">Level {{ l }}</option>
+        }
+      </select>
+      <ion-icon aria-hidden="true" name="chevron-down-outline" class="pointer-events-none absolute right-2.5 text-ink" />
+    </div>
+
+    <div class="mt-4 flex px-4 text-[10px] font-bold uppercase tracking-[0.2em] text-muted" aria-hidden="true">
+      <span class="w-10">Rank</span>
+      <span class="flex-1">Player</span>
+      <span>Gold/Time</span>
+    </div>
+
+    <ol class="mt-1 flex list-none flex-col gap-2 p-0" data-testid="leaderboard">
+      @for (entry of entries.value() ?? []; track entry.keeperName) {
+        <li
+          class="flex items-center rounded-lg border px-4 py-3"
+          [class]="entry.isCurrentUser ? 'border-primary bg-primary text-on-primary' : 'border-border bg-surface text-ink'"
+          [attr.data-current-user]="entry.isCurrentUser || null"
+        >
+          <span class="w-10 text-sm font-bold tabular-nums">{{ entry.rank.toString().padStart(2, '0') }}</span>
+          <span class="flex-1 truncate font-bold">
+            @if (entry.isCurrentUser) { You · }{{ entry.keeperName }}
+          </span>
+          <span class="text-right leading-tight">
+            <span class="block font-black tabular-nums">{{ entry.gold | number }}G</span>
+            <span class="block text-xs tabular-nums opacity-70">{{ formatDuration(entry.timeSeconds) }}</span>
+          </span>
+        </li>
+      } @empty {
+        <li class="rounded-lg border border-dashed border-border px-4 py-8 text-center text-muted">
+          No keepers have finished this level yet.
+        </li>
+      }
+    </ol>
+    </div>
+  </div>
+</ion-content>
